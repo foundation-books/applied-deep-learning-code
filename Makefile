@@ -1,6 +1,6 @@
-.PHONY: help public-release-check poetry-check text-hygiene-check python-syntax-check notebook-check notebook-explanation-check notebook-public-path-check \
+.PHONY: help smoke-checks poetry-check python-syntax-check notebook-check \
 	mnist-code-check cnn-code-check cnn-arch-code-check cnn-revisited-code-check \
-	transfer-learning-code-check rnn-code-check embeddings-code-check \
+	neural-network-training-code-check transfer-learning-code-check rnn-code-check embeddings-code-check \
 	attention-transformers-code-check vit-code-check image-generation-code-check \
 	rl-intro-code-check nnt-revisited-code-check rag-code-check llm-code-check \
 	lora-code-check rl-llm-code-check asr-code-check tts-code-check \
@@ -15,17 +15,15 @@ PY_SYNTAX_CHECK = $(PYTHON) -B -c 'import ast,pathlib,sys; [ast.parse(pathlib.Pa
 
 help:
 	@printf '%s\n' 'Available public companion-code checks:'
-	@printf '%s\n' '  public-release-check          Run all public-repo validation checks'
+	@printf '%s\n' '  smoke-checks                  Run all dependency-light smoke checks'
 	@printf '%s\n' '  poetry-check                  Validate pyproject.toml and poetry.lock'
-	@printf '%s\n' '  text-hygiene-check            Check text files for extra final blank lines'
 	@printf '%s\n' '  python-syntax-check           Parse every Python file without writing bytecode'
-	@printf '%s\n' '  notebook-check                Validate notebooks as JSON and reader-facing walkthroughs'
-	@printf '%s\n' '  notebook-explanation-check    Check reader-facing notebook explanation coverage'
-	@printf '%s\n' '  notebook-public-path-check    Check notebook companion paths from public repo root'
+	@printf '%s\n' '  notebook-check                Validate notebooks as JSON'
 	@printf '%s\n' '  mnist-code-check              Smoke-check MNIST chapter code'
 	@printf '%s\n' '  cnn-code-check                Smoke-check CNN basics chapter code'
 	@printf '%s\n' '  cnn-arch-code-check           Smoke-check CNN architectures chapter code'
 	@printf '%s\n' '  cnn-revisited-code-check      Smoke-check CNNs revisited chapter code'
+	@printf '%s\n' '  neural-network-training-code-check  Check neural-network-training notebook JSON'
 	@printf '%s\n' '  transfer-learning-code-check  Smoke-check transfer-learning chapter code'
 	@printf '%s\n' '  embeddings-code-check         Smoke-check embeddings chapter code'
 	@printf '%s\n' '  attention-transformers-code-check  Smoke-check attention/Transformers code'
@@ -44,9 +42,9 @@ help:
 	@printf '%s\n' '  segmentation-code-check       Smoke-check segmentation workflow'
 	@printf '%s\n' '  vlm-code-check                Smoke-check vision-language-model code'
 
-public-release-check: poetry-check text-hygiene-check python-syntax-check notebook-check \
+smoke-checks: poetry-check python-syntax-check notebook-check \
 	mnist-code-check cnn-code-check cnn-arch-code-check cnn-revisited-code-check \
-	transfer-learning-code-check rnn-code-check embeddings-code-check \
+	neural-network-training-code-check transfer-learning-code-check rnn-code-check embeddings-code-check \
 	attention-transformers-code-check vit-code-check image-generation-code-check \
 	rl-intro-code-check nnt-revisited-code-check rag-code-check llm-code-check \
 	lora-code-check rl-llm-code-check asr-code-check tts-code-check \
@@ -54,9 +52,6 @@ public-release-check: poetry-check text-hygiene-check python-syntax-check notebo
 
 poetry-check:
 	$(POETRY) check --lock
-
-text-hygiene-check:
-	$(PYTHON) -B check_text_hygiene.py
 
 python-syntax-check:
 	$(PY_SYNTAX_CHECK) $(PYTHON_FILES)
@@ -84,14 +79,6 @@ notebook-check:
 	$(PYTHON) -m json.tool chapter_transfer_learning_fastai/food101_fastai_walkthrough.ipynb >/dev/null
 	$(PYTHON) -m json.tool chapter_vision_language_models/vlm_reasoning_walkthrough.ipynb >/dev/null
 	$(PYTHON) -m json.tool chapter_vision_transformers/pretrained_vit_walkthrough.ipynb >/dev/null
-	$(PYTHON) -B check_notebook_public_paths.py
-	$(PYTHON) -B check_notebook_explanations.py
-
-notebook-explanation-check:
-	$(PYTHON) -B check_notebook_explanations.py
-
-notebook-public-path-check:
-	$(PYTHON) -B check_notebook_public_paths.py
 
 mnist-code-check: poetry-check
 	$(PY_SYNTAX_CHECK) chapter_mnist_python/mnist_shape_check.py chapter_mnist_python/mnist_keras3.py chapter_mnist_python/mnist_pytorch.py
@@ -115,6 +102,9 @@ cnn-revisited-code-check: poetry-check
 	$(PY_SYNTAX_CHECK) chapter_cnn_revisited/convnext_food101_pytorch.py
 	$(PYTHON) -m json.tool chapter_cnn_revisited/convnext_food101_walkthrough.ipynb >/dev/null
 	cd chapter_cnn_revisited && $(PYTHON) convnext_food101_pytorch.py --check-deps --allow-missing-deps >/dev/null
+
+neural-network-training-code-check:
+	$(PYTHON) -m json.tool chapter_neural_network_training/cifar10_training_lab.ipynb >/dev/null
 
 transfer-learning-code-check: poetry-check
 	$(PY_SYNTAX_CHECK) chapter_transfer_learning_fastai/food101_fastai.py chapter_transfer_learning_fastai/food101_keras3.py

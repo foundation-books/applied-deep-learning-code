@@ -62,13 +62,12 @@ Linux runs after dependencies are installed. CUDA, TensorFlow GPU, PyTorch CUDA,
 Unsloth, Qwen ASR/TTS, and vLLM-style workflows still require a compatible
 NVIDIA driver, WSL GPU support, and chapter-specific runtime review.
 
-The root `Makefile` contains dependency-light smoke checks for public-repo
-validation. The full public release check parses every tracked Python file
-without writing bytecode, validates notebooks, and runs the lightweight chapter
-checks:
+The root `Makefile` contains optional dependency-light smoke checks. The full
+smoke check parses Python files without writing bytecode, validates notebooks,
+and runs the lightweight chapter checks:
 
 ```sh
-make public-release-check
+make smoke-checks
 make notebook-check
 make vit-code-check
 make object-detection-code-check
@@ -93,34 +92,37 @@ poetry run python -m ipykernel install --user --name applied-deep-learning-code 
 
 ## Companion Coverage
 
-| Book chapter | Companion path | Notebook | Check target |
-| --- | --- | --- | --- |
-| Introduction and history | Intentionally no code | None | None |
-| TensorFlow Playground | `chapter_tensorflow_playground/` | Browser lab | None |
-| MNIST Python | `chapter_mnist_python/` | `mnist_keras3_walkthrough.ipynb` | `make mnist-code-check` |
-| CNN basics | `chapter_cnn_basics/` | `cifar10_keras3_walkthrough.ipynb` | `make cnn-code-check` |
-| Neural network training | `chapter_neural_network_training/` | `cifar10_training_lab.ipynb` | `make public-release-check` |
-| CNN architectures | `chapter_cnn_architectures/` | `resnet_cifar10_walkthrough.ipynb` | `make cnn-arch-code-check` |
-| Transfer learning | `chapter_transfer_learning_fastai/` | `food101_fastai_walkthrough.ipynb` | `make transfer-learning-code-check` |
-| Embeddings | `chapter_embeddings/` | `kaggle_bag_of_embeddings_sentiment_walkthrough.ipynb` | `make embeddings-code-check` |
-| Recurrent neural networks | `chapter_recurrent_neural_networks/` | `imdb_rnn_keras3_walkthrough.ipynb` | `make rnn-code-check` |
-| Attention and Transformers | `chapter_attention_transformers/` | `attention_transformers_walkthrough.ipynb` | `make attention-transformers-code-check` |
-| From Transformer to LLMs | `chapter_from_transformer_to_llms/` | `llm_prompt_benchmark_walkthrough.ipynb` | `make llm-code-check` |
-| Retrieval-augmented generation | `chapter_retrieval_augmented_generation/` | `rag_course_assistant_walkthrough.ipynb` | `make rag-code-check` |
-| LoRA and QLoRA adaptation | `chapter_lora_qlora_adaptation/` | `lora_unsloth_course_assistant_walkthrough.ipynb` | `make lora-code-check` |
-| Reinforcement learning intro | `chapter_reinforcement_learning_intro/` | `rl_intro_walkthrough.ipynb` | `make rl-intro-code-check` |
-| RL for LLM training | `chapter_reinforcement_learning_llm_training/` | `rl_lora_unsloth_reasoning_walkthrough.ipynb` | `make rl-llm-code-check` |
-| Neural network training revisited | `chapter_neural_network_training_revisited/` | `transformer_distillation_walkthrough.ipynb` | `make nnt-revisited-code-check` |
-| Vision Transformers | `chapter_vision_transformers/` | `pretrained_vit_walkthrough.ipynb` | `make vit-code-check` |
-| CNNs revisited | `chapter_cnn_revisited/` | `convnext_food101_walkthrough.ipynb` | `make cnn-revisited-code-check` |
-| Vision-language models | `chapter_vision_language_models/` | `vlm_reasoning_walkthrough.ipynb` | `make vlm-code-check` |
-| Object detection | `chapter_object_detection/` | `yolo_medical_detection_walkthrough.ipynb` | `make object-detection-code-check` |
-| Segmentation | `chapter_segmentation_cnn_transformers/` | `segmentation_medical_walkthrough.ipynb` | `make segmentation-code-check` |
-| Image generation | `chapter_image_generation/` | `image_generation_walkthrough.ipynb` | `make image-generation-code-check` |
-| Automatic speech recognition | `chapter_automatic_speech_recognition/` | `asr_transcription_walkthrough.ipynb` | `make asr-code-check` |
-| Text-to-speech | `chapter_text_to_speech/` | `tts_voice_cloning_walkthrough.ipynb` | `make tts-code-check` |
-| Advanced topics | Intentionally no code | None | None |
-| Future work | Intentionally no code | None | None |
+Directory names are descriptive and stable. Use the chapter number column to
+map from the book to the companion path.
+
+| Ch. | Book chapter | Companion path | Notebook | Check target |
+| --- | --- | --- | --- | --- |
+| 1 | Introduction and history | Intentionally no code | None | None |
+| 2 | TensorFlow Playground | `chapter_tensorflow_playground/` | Browser lab | None |
+| 3 | MNIST Python | `chapter_mnist_python/` | `mnist_keras3_walkthrough.ipynb` | `make mnist-code-check` |
+| 4 | CNN basics | `chapter_cnn_basics/` | `cifar10_keras3_walkthrough.ipynb` | `make cnn-code-check` |
+| 5 | Neural network training | `chapter_neural_network_training/` | `cifar10_training_lab.ipynb` | `make neural-network-training-code-check` |
+| 6 | CNN architectures | `chapter_cnn_architectures/` | `resnet_cifar10_walkthrough.ipynb` | `make cnn-arch-code-check` |
+| 7 | Transfer learning | `chapter_transfer_learning_fastai/` | `food101_fastai_walkthrough.ipynb` | `make transfer-learning-code-check` |
+| 8 | Embeddings | `chapter_embeddings/` | `kaggle_bag_of_embeddings_sentiment_walkthrough.ipynb` | `make embeddings-code-check` |
+| 9 | Recurrent neural networks | `chapter_recurrent_neural_networks/` | `imdb_rnn_keras3_walkthrough.ipynb` | `make rnn-code-check` |
+| 10 | Attention and Transformers | `chapter_attention_transformers/` | `attention_transformers_walkthrough.ipynb` | `make attention-transformers-code-check` |
+| 11 | From Transformer to LLMs | `chapter_from_transformer_to_llms/` | `llm_prompt_benchmark_walkthrough.ipynb` | `make llm-code-check` |
+| 12 | Retrieval-augmented generation | `chapter_retrieval_augmented_generation/` | `rag_course_assistant_walkthrough.ipynb` | `make rag-code-check` |
+| 13 | LoRA and QLoRA adaptation | `chapter_lora_qlora_adaptation/` | `lora_unsloth_course_assistant_walkthrough.ipynb` | `make lora-code-check` |
+| 14 | Reinforcement learning intro | `chapter_reinforcement_learning_intro/` | `rl_intro_walkthrough.ipynb` | `make rl-intro-code-check` |
+| 15 | RL for LLM training | `chapter_reinforcement_learning_llm_training/` | `rl_lora_unsloth_reasoning_walkthrough.ipynb` | `make rl-llm-code-check` |
+| 16 | Neural network training revisited | `chapter_neural_network_training_revisited/` | `transformer_distillation_walkthrough.ipynb` | `make nnt-revisited-code-check` |
+| 17 | Vision Transformers | `chapter_vision_transformers/` | `pretrained_vit_walkthrough.ipynb` | `make vit-code-check` |
+| 18 | CNNs revisited | `chapter_cnn_revisited/` | `convnext_food101_walkthrough.ipynb` | `make cnn-revisited-code-check` |
+| 19 | Vision-language models | `chapter_vision_language_models/` | `vlm_reasoning_walkthrough.ipynb` | `make vlm-code-check` |
+| 20 | Object detection | `chapter_object_detection/` | `yolo_medical_detection_walkthrough.ipynb` | `make object-detection-code-check` |
+| 21 | Segmentation | `chapter_segmentation_cnn_transformers/` | `segmentation_medical_walkthrough.ipynb` | `make segmentation-code-check` |
+| 22 | Image generation | `chapter_image_generation/` | `image_generation_walkthrough.ipynb` | `make image-generation-code-check` |
+| 23 | Automatic speech recognition | `chapter_automatic_speech_recognition/` | `asr_transcription_walkthrough.ipynb` | `make asr-code-check` |
+| 24 | Text-to-speech | `chapter_text_to_speech/` | `tts_voice_cloning_walkthrough.ipynb` | `make tts-code-check` |
+| 25 | Advanced topics | Intentionally no code | None | None |
+| 26 | Future work | Intentionally no code | None | None |
 
 ## Dependency Groups
 

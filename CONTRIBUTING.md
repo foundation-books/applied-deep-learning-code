@@ -7,7 +7,7 @@ artifacts.
 Before opening a change:
 
 ```sh
-make public-release-check
+make smoke-checks
 ```
 
 Do not commit `.env` files, API keys, downloaded datasets, model weights,
