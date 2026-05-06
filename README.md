@@ -3,8 +3,20 @@
 This repository contains reader-facing code, notebooks, and compact reference
 artifacts for the Applied Deep Learning textbook.
 
-Book information:
-https://www.amazon.com/dp/B0GZF7QRSH
+<img src="assets/applied-deep-learning-cover.jpg" alt="Applied Deep Learning front cover" width="260">
+
+## Book Information
+
+| Field | Details |
+| --- | --- |
+| Full title | Applied Deep Learning: First Edition |
+| Author | Yin Yang |
+| Publisher | Foundation Books Project |
+| Copyright | 2026 Yin Yang |
+| Topics | CNNs, Transformers, Diffusion Models, LLMs |
+| Amazon ASIN | B0GZF7QRSH |
+| ISBN | Not listed in the current book metadata |
+| Book page | https://www.amazon.com/dp/B0GZF7QRSH |
 
 This is a GitHub companion-code repository, not a PyPI package. The Poetry
 configuration defines shared dependency groups for chapter workflows.
