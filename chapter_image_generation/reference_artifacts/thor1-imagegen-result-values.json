@@ -1,0 +1,63 @@
+{
+  "run_id": "image-generation-reference-20260428T090506Z",
+  "host": "not-recorded",
+  "device": "CUDA reference GPU",
+  "dataset_name": "procedural-shapes-32",
+  "dataset_note": "Generated locally by image_generation_experiments.py; no external image data.",
+  "image_count": 840,
+  "base_image_count": 768,
+  "target_image_count": 72,
+  "base_model_id": "tiny prompt-conditioned DDPM trained in this run",
+  "target_concept": "teal circle striped",
+  "validation_prompts": [
+    "teal circle striped",
+    "red circle striped",
+    "teal circle solid",
+    "blue square dotted",
+    "green triangle solid",
+    "teal circle striped",
+    "red square striped",
+    "teal triangle dotted"
+  ],
+  "selected_lora_rank": 8,
+  "selected_lora_trainable_parameters": 6680,
+  "training_command": "image_generation_experiments.py --mode reference --device auto --diffusion-steps 8000 --finetune-steps 1000 --gan-steps 1000 --output-dir runs/image-generation-reference",
+  "training_time_seconds": 191.06734438380226,
+  "runtime_component_seconds": 149.79810048965737,
+  "lora_ablation_seconds": 41.26924389414489,
+  "selected_rank_end_to_end_seconds": 168.05113489972428,
+  "training_time_note": "training_time_seconds includes runtime-memory components plus all LoRA rank-ablation fine-tunes; runtime_component_seconds is the pre-ablation subtotal.",
+  "peak_memory_mb": 405.048828125,
+  "inference_time_seconds_per_image": 0.007902371522504836,
+  "software_stack": {
+    "python": "3.12.3",
+    "torch": "2.11.0+cu130",
+    "numpy": "2.4.4",
+    "pillow": "12.2.0",
+    "platform": "Linux CUDA reference environment"
+  },
+  "config": {
+    "mode": "reference",
+    "seed": 123,
+    "image_size": 32,
+    "base_samples": 768,
+    "target_samples": 72,
+    "batch_size": 64,
+    "diffusion_batch_size": 64,
+    "ae_steps": 300,
+    "vae_steps": 400,
+    "gan_steps": 1000,
+    "diffusion_steps": 8000,
+    "finetune_steps": 1000,
+    "timesteps": 50,
+    "latent_dim": 32,
+    "lora_ranks": [
+      4,
+      8
+    ],
+    "learning_rate": 0.001,
+    "gan_learning_rate": 0.0002,
+    "diffusion_learning_rate": 0.0002,
+    "finetune_learning_rate": 0.0005
+  }
+}

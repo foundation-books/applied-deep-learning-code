@@ -1,0 +1,17 @@
+model,display_name,true_label,predicted_label,count
+distilled_student,Distilled student,World,World,202
+distilled_student,Distilled student,World,Sports,11
+distilled_student,Distilled student,World,Business,19
+distilled_student,Distilled student,World,Sci/Tech,13
+distilled_student,Distilled student,Sports,World,2
+distilled_student,Distilled student,Sports,Sports,242
+distilled_student,Distilled student,Sports,Business,3
+distilled_student,Distilled student,Sports,Sci/Tech,2
+distilled_student,Distilled student,Business,World,3
+distilled_student,Distilled student,Business,Sports,4
+distilled_student,Distilled student,Business,Business,218
+distilled_student,Distilled student,Business,Sci/Tech,24
+distilled_student,Distilled student,Sci/Tech,World,11
+distilled_student,Distilled student,Sci/Tech,Sports,1
+distilled_student,Distilled student,Sci/Tech,Business,26
+distilled_student,Distilled student,Sci/Tech,Sci/Tech,219

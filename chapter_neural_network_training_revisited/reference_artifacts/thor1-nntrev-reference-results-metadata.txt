@@ -1,0 +1,26 @@
+Neural network training revisited reference experiment
+timestamp_utc: 2026-04-28T10:26:48Z
+hostname: not-recorded
+platform: Linux aarch64 CUDA reference environment
+python: 3.12.3
+torch: 2.11.0+cu130
+cuda_available: True
+cuda_version: 13.0
+device: cuda
+teacher_checkpoint: textattack/bert-base-uncased-ag-news
+student_checkpoint: prajjwal1/bert-mini
+tokenizer_checkpoint: prajjwal1/bert-mini
+dataset: ag_news
+dataset_sizes: {'train': 4000, 'validation': 1000, 'test': 1000}
+max_length: 96
+batch_size: 32
+eval_batch_size: 64
+teacher_epochs: 0
+student_epochs: 3
+temperature: 2.0
+alpha: 0.5
+mixed_precision: bf16
+latency_warmup: 8
+latency_repetitions: 40
+include_error_text: False
+command: transformer_distillation_experiment.py --teacher-checkpoint textattack/bert-base-uncased-ag-news --student-checkpoint prajjwal1/bert-mini --cache-dir <hf-cache> --train-examples 4000 --validation-examples 1000 --test-examples 1000 --student-epochs 3 --batch-size 32 --eval-batch-size 64 --mixed-precision bf16 --output-dir runs/reference-nntrev-ag-news-bert-mini

@@ -1,0 +1,11 @@
+true_label,airplane,automobile,bird,cat,deer,dog,frog,horse,ship,truck
+airplane,0,2,6,0,10,15,0,0,6,0
+automobile,0,1,4,0,5,5,0,0,3,0
+bird,0,0,1,0,21,2,0,0,1,0
+cat,0,1,2,0,21,2,0,0,0,0
+deer,0,0,2,0,23,2,0,0,2,0
+dog,0,0,0,0,19,4,0,0,0,0
+frog,0,0,3,0,19,1,0,0,0,0
+horse,0,0,3,0,25,5,0,0,0,0
+ship,0,0,2,0,4,6,0,0,4,0
+truck,0,0,3,0,13,8,0,0,0,0

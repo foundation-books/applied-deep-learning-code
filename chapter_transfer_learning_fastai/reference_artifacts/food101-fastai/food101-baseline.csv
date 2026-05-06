@@ -1,0 +1,43 @@
+field,value
+record_type,compact Food-101 validation baseline record
+run_date_utc,2026-04-22
+run_directory,resnet34-baseline-20260422T153332Z
+artifact_policy,raw run directory is not checked in because it may contain large model exports and image-level validation evidence
+command,python food101_fastai.py --architecture resnet34 --image-size 224 --resize-size 460 --batch-size 64 --freeze-epochs 1 --epochs 5 --base-lr 3e-3
+data_source,fastai.URLs.FOOD
+split_rule,RandomSplitter(valid_pct=0.2 seed=42) over the official Food-101 training split
+reserved_test_policy,official Food-101 test split not evaluated during baseline selection
+fastai_version,2.8.7
+pytorch_version,2.11.0
+torchvision_version,0.26.0
+pillow_version,12.2.0
+timm_version,not installed
+python_version,3.12.3
+platform,aarch64 Linux
+device,CUDA selected by fast.ai
+host_provenance_note,host name was not captured in this compact checked-in artifact
+architecture,ResNet34
+weights,pretrained TorchVision weights
+batch_size,64
+resize_size,460
+training_image_size,224
+total_parameters,21863744
+frozen_stage_trainable_parameters,596096
+unfrozen_stage_trainable_parameters,21863744
+freeze_epochs,1
+unfrozen_epochs,5
+base_lr,0.003
+lr_mult,100
+training_items,60600
+validation_items,15150
+reserved_test_items,25250
+frozen_training_elapsed_seconds,492.917
+frozen_validation_elapsed_seconds,77.627
+frozen_validation_loss,1.8694
+frozen_validation_accuracy,0.5273
+unfrozen_training_elapsed_seconds,2594.293
+unfrozen_validation_elapsed_seconds,77.703
+unfrozen_validation_loss,0.8861
+unfrozen_validation_accuracy,0.7730
+total_elapsed_seconds,3872.965
+test_evaluation,not evaluated

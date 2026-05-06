@@ -1,0 +1,13 @@
+CNN architectures ResNet50 CIFAR-10 regenerated figure metadata
+Generated from the chapter figure-generation workflow.
+Run started UTC: 2026-04-29T13:37:54+00:00
+Python: 3.12.3
+Matplotlib: matplotlib 3.10.9
+Plotnine: plotnine 0.15.3
+Artifact prefix: resnet50-cifar10-pytorch
+Source files:
+- history.csv
+- confusion-matrix.csv
+Generated files:
+- training-curves.png
+- confusion-matrix.png

@@ -1,0 +1,19 @@
+{
+  "best_validation_accuracy": 0.7836303630363036,
+  "elapsed_seconds": 1234.1229049866088,
+  "history_plot": "history_plot.png",
+  "test_accuracy": 0.8352475247524752,
+  "test_confusion_matrix": "test_confusion_matrix.csv",
+  "test_confusion_matrix_plot": "test_confusion_matrix.png",
+  "test_loss": 0.589293497137504,
+  "test_per_class_accuracy": "test_per_class_accuracy.csv",
+  "test_prediction_examples": "test_prediction_examples.csv",
+  "test_top5_accuracy": 0.966059405940594,
+  "validation_accuracy": 0.7836303630363036,
+  "validation_confusion_matrix": "validation_confusion_matrix.csv",
+  "validation_confusion_matrix_plot": "validation_confusion_matrix.png",
+  "validation_loss": 0.8074722644755549,
+  "validation_per_class_accuracy": "validation_per_class_accuracy.csv",
+  "validation_prediction_examples": "validation_prediction_examples.csv",
+  "validation_top5_accuracy": 0.9377557755775577
+}

@@ -1,0 +1,218 @@
+[project]
+name = "applied-deep-learning-code"
+version = "0.1.0"
+description = "Shared Poetry environment for the Applied Deep Learning textbook companion code."
+authors = [{ name = "Yin Yang" }]
+requires-python = ">=3.10,<3.13"
+dependencies = []
+
+[tool.poetry]
+package-mode = false
+
+[tool.poetry.group.keras-tensorflow]
+optional = true
+
+[tool.poetry.group.keras-tensorflow.dependencies]
+keras = ">=3.0,<4.0"
+tensorflow = ">=2.16,<3.0"
+
+[tool.poetry.group.keras-torch]
+optional = true
+
+[tool.poetry.group.keras-torch.dependencies]
+keras = ">=3.0,<4.0"
+torch = ">=2.2,<3.0"
+
+[tool.poetry.group.keras-jax]
+optional = true
+
+[tool.poetry.group.keras-jax.dependencies]
+keras = ">=3.0,<4.0"
+jax = ">=0.4"
+jaxlib = ">=0.4"
+
+[tool.poetry.group.pytorch]
+optional = true
+
+[tool.poetry.group.pytorch.dependencies]
+torch = ">=2.2,<3.0"
+torchvision = ">=0.17,<1.0"
+
+[tool.poetry.group.figures]
+optional = true
+
+[tool.poetry.group.figures.dependencies]
+matplotlib = ">=3.8"
+numpy = ">=1.26"
+pillow = ">=10.0"
+plotnine = ">=0.15"
+
+[tool.poetry.group.transfer-learning]
+optional = true
+
+[tool.poetry.group.transfer-learning.dependencies]
+fastai = ">=2.7,<3.0"
+ipython = ">=8.0"
+matplotlib = ">=3.8"
+pillow = ">=10.0"
+plotnine = ">=0.15"
+torch = ">=2.2,<3.0"
+torchvision = ">=0.17,<1.0"
+
+[tool.poetry.group.embeddings]
+optional = true
+
+[tool.poetry.group.embeddings.dependencies]
+numpy = ">=1.26"
+pandas = ">=2.0"
+scikit-learn = ">=1.4"
+
+[tool.poetry.group.attention-transformers]
+optional = true
+
+[tool.poetry.group.attention-transformers.dependencies]
+accelerate = ">=0.26"
+numpy = ">=1.26"
+pandas = ">=2.0"
+scikit-learn = ">=1.4"
+torch = ">=2.2,<3.0"
+transformers = ">=4.40,<5.0"
+
+[tool.poetry.group.vision-transformers]
+optional = true
+
+[tool.poetry.group.vision-transformers.dependencies]
+matplotlib = ">=3.8"
+peft = ">=0.10,<1.0"
+pillow = ">=10.0"
+torch = ">=2.2,<3.0"
+torchvision = ">=0.17,<1.0"
+transformers = ">=4.40,<5.0"
+
+[tool.poetry.group.image-generation]
+optional = true
+
+[tool.poetry.group.image-generation.dependencies]
+matplotlib = ">=3.8"
+numpy = ">=1.26"
+pillow = ">=10.0"
+torch = ">=2.2,<3.0"
+
+[tool.poetry.group.rl-intro]
+optional = true
+
+[tool.poetry.group.rl-intro.dependencies]
+ale-py = ">=0.11,<1.0"
+gymnasium = { version = ">=1.0,<1.3", extras = ["box2d"] }
+minigrid = ">=3.0,<4.0"
+stable-baselines3 = ">=2.7,<3.0"
+
+[tool.poetry.group.nnt-revisited]
+optional = true
+
+[tool.poetry.group.nnt-revisited.dependencies]
+datasets = ">=2.19,<4.0"
+matplotlib = ">=3.8"
+numpy = ">=1.26"
+pandas = ">=2.0"
+plotnine = ">=0.15"
+scikit-learn = ">=1.4"
+torch = ">=2.2,<3.0"
+transformers = ">=4.40,<5.0"
+
+[tool.poetry.group.rag-neural]
+optional = true
+
+[tool.poetry.group.rag-neural.dependencies]
+numpy = ">=1.26"
+scikit-learn = ">=1.4"
+torch = ">=2.2,<3.0"
+transformers = ">=4.40,<5.0"
+
+[tool.poetry.group.llm]
+optional = true
+
+[tool.poetry.group.llm.dependencies]
+accelerate = ">=0.26"
+torch = ">=2.2,<3.0"
+transformers = ">=4.40,<5.0"
+
+[tool.poetry.group.lora]
+optional = true
+
+[tool.poetry.group.lora.dependencies]
+accelerate = ">=0.26"
+datasets = ">=2.19,<4.0"
+peft = ">=0.10,<1.0"
+torch = ">=2.2,<3.0"
+transformers = ">=4.40,<5.0"
+trl = ">=0.9,<1.0"
+
+[tool.poetry.group.rl-llm]
+optional = true
+
+[tool.poetry.group.rl-llm.dependencies]
+accelerate = ">=0.26"
+datasets = ">=2.19,<4.0"
+peft = ">=0.10,<1.0"
+torch = ">=2.2,<3.0"
+transformers = ">=4.40,<5.0"
+trl = ">=0.9,<1.0"
+
+[tool.poetry.group.asr]
+optional = true
+
+[tool.poetry.group.asr.dependencies]
+jiwer = ">=3.0,<5.0"
+librosa = ">=0.10,<1.0"
+numpy = ">=1.26"
+soundfile = ">=0.12,<1.0"
+torch = ">=2.2,<3.0"
+torchaudio = ">=2.2,<3.0"
+transformers = ">=4.40,<5.0"
+
+[tool.poetry.group.tts]
+optional = true
+
+[tool.poetry.group.tts.dependencies]
+numpy = ">=1.26"
+soundfile = ">=0.12,<1.0"
+torch = ">=2.2,<3.0"
+
+[tool.poetry.group.object-detection]
+optional = true
+
+[tool.poetry.group.object-detection.dependencies]
+matplotlib = ">=3.8"
+numpy = ">=1.26"
+pandas = ">=2.0"
+pillow = ">=10.0"
+plotnine = ">=0.15"
+pydicom = ">=2.4,<4.0"
+pyyaml = ">=6.0"
+ultralytics = ">=8.3,<9.0"
+
+[tool.poetry.group.segmentation]
+optional = true
+
+[tool.poetry.group.segmentation.dependencies]
+matplotlib = ">=3.8"
+numpy = ">=1.26"
+pandas = ">=2.0"
+pillow = ">=10.0"
+plotnine = ">=0.15"
+torch = ">=2.2,<3.0"
+transformers = ">=4.40,<5.0"
+
+[tool.poetry.group.vlm]
+optional = true
+
+[tool.poetry.group.vlm.dependencies]
+accelerate = ">=0.26"
+pillow = ">=10.0"
+torch = ">=2.2,<3.0"
+transformers = ">=4.40,<5.0"
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"

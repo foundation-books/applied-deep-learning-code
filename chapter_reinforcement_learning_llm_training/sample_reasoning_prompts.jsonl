@@ -1,0 +1,5 @@
+{"answer": "<reasoning>17 + 20 = 37 and 37 + 5 = 42.</reasoning><answer>42</answer>", "final_answer": "42", "question": "Compute 17 + 25. Return the final integer in <answer> tags."}
+{"answer": "<reasoning>9 groups of 8 give 72.</reasoning><answer>72</answer>", "final_answer": "72", "question": "Compute 9 * 8. Return the final integer in <answer> tags."}
+{"answer": "<reasoning>100 - 30 = 70 and 70 - 7 = 63.</reasoning><answer>63</answer>", "final_answer": "63", "question": "Compute 100 - 37. Return the final integer in <answer> tags."}
+{"answer": "<reasoning>6 * 7 = 42, and 42 + 5 = 47.</reasoning><answer>47</answer>", "final_answer": "47", "question": "Compute 6 * 7 + 5. Return the final integer in <answer> tags."}
+{"answer": "<reasoning>81 divided by 9 equals 9.</reasoning><answer>9</answer>", "final_answer": "9", "question": "Compute 81 / 9. Return the final integer in <answer> tags."}

@@ -1,0 +1,11 @@
+target_id,text,language,style,stress_test
+target_001,A waveform is a sequence of audio samples.,English,clear classroom narration,no
+target_002,Text to speech maps written text and voice conditions to audio.,English,clear classroom narration,no
+target_003,Real-time factor compares runtime with generated audio duration.,English,clear classroom narration,no
+target_004,The model predicts speech tokens before the waveform is reconstructed.,English,clear classroom narration,no
+target_005,A clean reference recording makes voice cloning easier to evaluate.,English,clear classroom narration,no
+target_006,The target manifest should stay fixed during a controlled comparison.,English,clear classroom narration,no
+target_007,Dr. Lee measured 3.14 kilograms in the laboratory.,English,careful pronunciation,yes
+target_008,ASR backcheck can reveal skipped words in generated speech.,English,careful pronunciation,no
+target_009,Qwen3-TTS should keep the speaker identity stable across short clips.,English,clear classroom narration,no
+target_010,Read GPU as three separate letters and read 2026 as a year.,English,careful pronunciation,yes

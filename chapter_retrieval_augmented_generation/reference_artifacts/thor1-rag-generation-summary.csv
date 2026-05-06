@@ -1,0 +1,9 @@
+run_name,questions,average_answer_score,average_citation_correctness,first_token_latency_ms_p50,full_generation_latency_ms_p50,full_generation_latency_ms_p95,prompt_tokens_mean,output_tokens_mean
+hybrid_topk_1,8,3.5,0.0,16.493,967.641,1663.79,239.12,71.62
+hybrid_topk_3,8,4.75,0.25,16.878,1189.887,2348.041,389.88,90.75
+hybrid_topk_5,8,4.0,0.0,20.504,924.798,1969.161,538.25,80.0
+hybrid_topk_8,8,4.0,0.0,23.287,1232.15,2339.659,757.75,92.5
+prompt_only,8,2.875,0.0,16.96,1590.107,2398.282,67.0,116.0
+rag_hybrid,8,4.75,0.25,17.029,1189.001,2349.997,389.88,90.75
+rag_lexical,8,4.125,0.0,17.671,867.231,1730.246,398.88,68.5
+rag_neural_dense,8,3.875,0.0,17.66,1190.489,2355.376,378.62,93.12

@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+message: "If you use this companion code, cite the Applied Deep Learning textbook."
+title: "Applied Deep Learning Companion Code"
+authors:
+  - family-names: "Yang"
+    given-names: "Yin"
+year: 2026
+license: MIT
+repository-code: "https://github.com/foundation-books/applied-deep-learning-code"

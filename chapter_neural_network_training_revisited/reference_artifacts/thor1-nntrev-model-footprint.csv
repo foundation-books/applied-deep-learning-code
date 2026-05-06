@@ -1,0 +1,4 @@
+model,display_name,parameter_count,trainable_parameter_count,model_size_mb,peak_memory_allocated_mb,peak_memory_reserved_mb
+teacher,Teacher Transformer,109485316,109485316,417.7323389053345,744.08935546875,780.0
+hard_student,Hard-label student,11171588,11171588,42.645145416259766,302.4267578125,396.0
+distilled_student,Distilled student,11171588,11171588,42.645145416259766,302.427734375,396.0
