@@ -3,8 +3,8 @@
 This repository contains reader-facing code, notebooks, and compact reference
 artifacts for the Applied Deep Learning textbook.
 
-Public repository:
-https://github.com/foundation-books/applied-deep-learning-code
+Book information:
+https://www.amazon.com/dp/B0GZF7QRSH
 
 This is a GitHub companion-code repository, not a PyPI package. The Poetry
 configuration defines shared dependency groups for chapter workflows.
