@@ -889,7 +889,7 @@ def run_experiments(args: argparse.Namespace) -> int:
     target_start = cfg.base_samples
     target_images = images[target_start:]
     target_conds = conds[target_start:]
-    save_grid(figures_dir / "thor1-imagegen-dataset-samples.png", images[:32], nrow=8)
+    save_grid(figures_dir / "imagegen-reference-dataset-samples.png", images[:32], nrow=8)
 
     models = define_torch_models(torch, nn, F, cfg)
     runtime_rows: list[dict[str, Any]] = []
@@ -897,18 +897,18 @@ def run_experiments(args: argparse.Namespace) -> int:
 
     recon, row = train_autoencoder(torch, nn, F, models, images, cfg, device)
     runtime_rows.append(row)
-    save_grid(figures_dir / "thor1-imagegen-baseline-reconstructions.png", torch.cat([images[:8], recon], dim=0), nrow=8)
-    output_files.append("figures/thor1-imagegen-baseline-reconstructions.png")
+    save_grid(figures_dir / "imagegen-reference-baseline-reconstructions.png", torch.cat([images[:8], recon], dim=0), nrow=8)
+    output_files.append("figures/imagegen-reference-baseline-reconstructions.png")
 
     interp, row = train_vae(torch, nn, F, models, images, cfg, device)
     runtime_rows.append(row)
-    save_grid(figures_dir / "thor1-imagegen-vae-latent-interpolation.png", interp, nrow=8)
-    output_files.append("figures/thor1-imagegen-vae-latent-interpolation.png")
+    save_grid(figures_dir / "imagegen-reference-vae-latent-interpolation.png", interp, nrow=8)
+    output_files.append("figures/imagegen-reference-vae-latent-interpolation.png")
 
     gan_samples, row = train_gan(torch, nn, F, models, images, cfg, device)
     runtime_rows.append(row)
-    save_grid(figures_dir / "thor1-imagegen-dcgan-sample-grid.png", gan_samples, nrow=8)
-    output_files.append("figures/thor1-imagegen-dcgan-sample-grid.png")
+    save_grid(figures_dir / "imagegen-reference-dcgan-sample-grid.png", gan_samples, nrow=8)
+    output_files.append("figures/imagegen-reference-dcgan-sample-grid.png")
 
     schedule = make_schedule(torch, cfg.timesteps, device)
     clean = target_images[0:1].to(device) * 2.0 - 1.0
@@ -917,26 +917,26 @@ def run_experiments(args: argparse.Namespace) -> int:
         t = torch.full((1,), int(t_value), dtype=torch.long, device=device)
         xt, _ = add_noise(torch, schedule, clean, t)
         noising_frames.append(xt.detach().cpu())
-    save_grid(figures_dir / "thor1-imagegen-diffusion-noising-grid.png", torch.cat(noising_frames, dim=0), nrow=8)
-    output_files.append("figures/thor1-imagegen-diffusion-noising-grid.png")
+    save_grid(figures_dir / "imagegen-reference-diffusion-noising-grid.png", torch.cat(noising_frames, dim=0), nrow=8)
+    output_files.append("figures/imagegen-reference-diffusion-noising-grid.png")
 
     base_diffusion, row = train_diffusion_base(torch, F, models, images[: cfg.base_samples], conds[: cfg.base_samples], cfg, device)
     runtime_rows.append(row)
     base_state = {name: tensor.detach().cpu().clone() for name, tensor in base_diffusion.state_dict().items()}
     val_cond, prompt_labels = validation_condition_tensor(torch, device)
     base_samples, trajectory = sample_diffusion(torch, base_diffusion, schedule, val_cond, cfg, device, keep_trajectory=True)
-    save_grid(figures_dir / "thor1-imagegen-pretrained-baseline-grid.png", base_samples, nrow=8)
-    output_files.append("figures/thor1-imagegen-pretrained-baseline-grid.png")
+    save_grid(figures_dir / "imagegen-reference-pretrained-baseline-grid.png", base_samples, nrow=8)
+    output_files.append("figures/imagegen-reference-pretrained-baseline-grid.png")
     if trajectory:
-        save_grid(figures_dir / "thor1-imagegen-diffusion-denoising-grid.png", torch.cat(trajectory, dim=0), nrow=len(trajectory))
-        output_files.append("figures/thor1-imagegen-diffusion-denoising-grid.png")
+        save_grid(figures_dir / "imagegen-reference-diffusion-denoising-grid.png", torch.cat(trajectory, dim=0), nrow=len(trajectory))
+        output_files.append("figures/imagegen-reference-diffusion-denoising-grid.png")
 
     ablation_rows: list[dict[str, Any]] = []
     finetuned_models: list[tuple[Any, dict[str, Any], Any]] = []
     for rank in cfg.lora_ranks:
         model, row = train_lora_finetune(torch, F, models, base_state, target_images, target_conds, cfg, device, rank)
         samples, _ = sample_diffusion(torch, model, make_schedule(torch, cfg.timesteps, device), val_cond, cfg, device)
-        sample_file = f"figures/thor1-imagegen-lora-rank-{rank}-grid.png"
+        sample_file = f"figures/imagegen-reference-lora-rank-{rank}-grid.png"
         save_grid(output_dir / sample_file, samples, nrow=8)
         row["sample_file"] = sample_file
         ablation_rows.append(row)
@@ -944,11 +944,11 @@ def run_experiments(args: argparse.Namespace) -> int:
         output_files.append(sample_file)
 
     selected_model, selected_row, selected_samples = min(finetuned_models, key=lambda item: float(item[1]["final_loss"]))
-    save_grid(figures_dir / "thor1-imagegen-finetuned-grid.png", selected_samples, nrow=8)
-    output_files.append("figures/thor1-imagegen-finetuned-grid.png")
+    save_grid(figures_dir / "imagegen-reference-finetuned-grid.png", selected_samples, nrow=8)
+    output_files.append("figures/imagegen-reference-finetuned-grid.png")
     ablation_grid = torch.cat([item[2] for item in finetuned_models], dim=0)
-    save_grid(figures_dir / "thor1-imagegen-ablation-outputs.png", ablation_grid, nrow=8)
-    output_files.append("figures/thor1-imagegen-ablation-outputs.png")
+    save_grid(figures_dir / "imagegen-reference-ablation-outputs.png", ablation_grid, nrow=8)
+    output_files.append("figures/imagegen-reference-ablation-outputs.png")
 
     hard_cond = torch.tensor(
         [condition_to_indices(("teal", "triangle", "dotted")), condition_to_indices(("green", "circle", "striped"))] * 4,
@@ -956,8 +956,8 @@ def run_experiments(args: argparse.Namespace) -> int:
         device=device,
     )
     failure_samples, _ = sample_diffusion(torch, selected_model, make_schedule(torch, cfg.timesteps, device), hard_cond, cfg, device)
-    save_grid(figures_dir / "thor1-imagegen-failure-case-grid.png", failure_samples, nrow=8)
-    output_files.append("figures/thor1-imagegen-failure-case-grid.png")
+    save_grid(figures_dir / "imagegen-reference-failure-case-grid.png", failure_samples, nrow=8)
+    output_files.append("figures/imagegen-reference-failure-case-grid.png")
 
     start_infer = time.perf_counter()
     _samples, _ = sample_diffusion(torch, selected_model, make_schedule(torch, cfg.timesteps, device), val_cond, cfg, device)
@@ -972,9 +972,9 @@ def run_experiments(args: argparse.Namespace) -> int:
             "seconds_per_image": inference_time,
         }
     )
-    write_csv(output_dir / "thor1-imagegen-runtime-memory-table.csv", runtime_rows)
-    write_csv(output_dir / "thor1-imagegen-ablation-table.csv", ablation_rows)
-    output_files.extend(["thor1-imagegen-runtime-memory-table.csv", "thor1-imagegen-ablation-table.csv"])
+    write_csv(output_dir / "imagegen-reference-runtime-memory-table.csv", runtime_rows)
+    write_csv(output_dir / "imagegen-reference-ablation-table.csv", ablation_rows)
+    output_files.extend(["imagegen-reference-runtime-memory-table.csv", "imagegen-reference-ablation-table.csv"])
 
     software = {
         "python": platform.python_version(),
@@ -1016,10 +1016,10 @@ def run_experiments(args: argparse.Namespace) -> int:
         "software_stack": software,
         "config": asdict(cfg),
     }
-    (output_dir / "thor1-imagegen-result-values.json").write_text(json.dumps(result_values, indent=2), encoding="utf-8")
-    output_files.append("thor1-imagegen-result-values.json")
+    (output_dir / "imagegen-reference-result-values.json").write_text(json.dumps(result_values, indent=2), encoding="utf-8")
+    output_files.append("imagegen-reference-result-values.json")
     write_metadata(
-        output_dir / "thor1-imagegen-reference-results-metadata.txt",
+        output_dir / "imagegen-reference-results-metadata.txt",
         cfg,
         device_name,
         software,
@@ -1027,7 +1027,7 @@ def run_experiments(args: argparse.Namespace) -> int:
         runtime_rows,
         ablation_rows,
     )
-    output_files.append("thor1-imagegen-reference-results-metadata.txt")
+    output_files.append("imagegen-reference-results-metadata.txt")
 
     print(json.dumps(result_values, indent=2))
     print(f"Wrote artifacts to {output_dir}")

@@ -13,16 +13,16 @@ saved outputs.
 The main script writes reference artifacts with stable names. The compact
 artifacts used by the chapter are mirrored in `reference_artifacts/`:
 
-- `thor1-nntrev-distillation-results.csv`
-- `thor1-nntrev-distillation-results.json`
-- `thor1-nntrev-result-values.json`
-- `thor1-nntrev-training-curves.csv`
-- `thor1-nntrev-latency-table.csv`
-- `thor1-nntrev-model-footprint.csv`
-- `thor1-nntrev-confusion-matrix.csv`
-- `thor1-nntrev-calibration-summary.csv`
-- `thor1-nntrev-error-examples.csv`
-- `thor1-nntrev-reference-results-metadata.txt`
+- `nntrev-reference-distillation-results.csv`
+- `nntrev-reference-distillation-results.json`
+- `nntrev-reference-result-values.json`
+- `nntrev-reference-training-curves.csv`
+- `nntrev-reference-latency-table.csv`
+- `nntrev-reference-model-footprint.csv`
+- `nntrev-reference-confusion-matrix.csv`
+- `nntrev-reference-calibration-summary.csv`
+- `nntrev-reference-error-examples.csv`
+- `nntrev-reference-results-metadata.txt`
 
 ## Environment
 
@@ -71,5 +71,4 @@ poetry run python regenerate_reference_plots.py \
   --plot calibration --check
 ```
 
-Omit `--check` to overwrite the selected `thor1-nntrev-*.png` and
-`nntrev-reference-*.png` files.
+Omit `--check` to overwrite the selected `nntrev-reference-*.png` files.

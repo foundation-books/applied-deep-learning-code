@@ -1,6 +1,6 @@
 # Applied Deep Learning Companion Code
 
-This repository contains reader-facing code, notebooks, and reference
+This repository contains reader-facing code, notebooks, and compact reference
 artifacts for the Applied Deep Learning textbook.
 
 <img src="assets/applied-deep-learning-cover.jpg" alt="Applied Deep Learning front cover" width="260">
@@ -9,30 +9,48 @@ artifacts for the Applied Deep Learning textbook.
 
 | Field | Details |
 | --- | --- |
-| Full title | Applied Deep Learning: CNNs, Transformers, Diffusion Models, LLMs |
-| Edition | First Edition |
+| Full title | Applied Deep Learning: First Edition |
 | Author | Yin Yang |
+| Publisher | Independently published |
 | Publication date | May 1, 2026 |
 | Language | English |
 | Print length | 589 pages |
 | ISBN-13 | 979-8195135201 |
 | Amazon ASIN | B0GZF7QRSH |
 | Series | Foundation Books |
+| Topics | CNNs, Transformers, Diffusion Models, LLMs |
 | Book page | https://www.amazon.com/dp/B0GZF7QRSH |
+
+This is a GitHub companion-code repository, not a PyPI package. The Poetry
+configuration defines shared dependency groups for chapter workflows.
 
 ## Setup
 
 Use Python 3.10, 3.11, or 3.12 with Poetry 2.x:
 
 ```sh
+poetry --version
 poetry install
 poetry check --lock
+```
+
+The checked-in lock file uses Poetry 2 lock metadata. Older Poetry 1.x clients
+may fail validation or produce a different lock file.
+
+Most chapters install only the stack they need:
+
+```sh
+poetry install --with keras-tensorflow
+poetry install --with pytorch,figures
+poetry install --with attention-transformers
+poetry install --with object-detection
+poetry install --with vlm
 ```
 
 After installing dependencies, run chapter commands inside the Poetry
 virtualenv. Chapter READMEs often show bare `python`; those examples assume the
 Poetry environment is active. Use `poetry env info --path` to locate the
-virtualenv.
+virtualenv. If you do not activate it, prefix commands with `poetry run`.
 
 Run commands from the repository root unless a chapter README says otherwise.
 Each chapter directory has its own README with quick checks, data layout, and

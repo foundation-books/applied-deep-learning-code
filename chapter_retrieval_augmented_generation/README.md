@@ -32,7 +32,7 @@ repository smoke tests.
 The heavier reference runner is:
 
 ```text
-rag_thor1_experiments.py
+rag_reference_experiments.py
 ```
 
 It is intended for chapter artifact generation on a reviewed local GPU runtime,
@@ -46,15 +46,15 @@ The committed reference CSV summaries cited by the chapter are included in this
 companion-code directory:
 
 ```text
-reference_artifacts/thor1-rag-retrieval-summary.csv
-reference_artifacts/thor1-rag-generation-summary.csv
+reference_artifacts/rag-reference-retrieval-summary.csv
+reference_artifacts/rag-reference-generation-summary.csv
 ```
 
-When you rerun `rag_thor1_experiments.py`, its default output directory is under
+When you rerun `rag_reference_experiments.py`, its default output directory is under
 this chapter's ignored `artifacts/` directory. Generated CSV/JSONL files will not
 appear as tracked files unless you intentionally copy them
-elsewhere. The historical `thor1-rag-*` output filenames are retained for
-chapter compatibility.
+elsewhere. Generated artifact filenames use the neutral `rag-reference-*`
+prefix for companion-code consistency.
 
 Generation does not trust Hugging Face remote model code by default. Pass
 `--trust-remote-code` only after reviewing the selected model repository.

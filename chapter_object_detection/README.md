@@ -13,7 +13,7 @@ The workflow is designed to be useful before a dataset is available.  It can
 write a dataset template, inspect YOLO-format labels, print reproducible
 Ultralytics training, validation, test, prediction, and export commands, record
 command timing, summarize `results.csv` files, and plot a compact mAP curve.
-The chapter includes one thor1 reference run on a small RSNA pneumonia subset;
+The chapter includes one CUDA reference run on a small RSNA pneumonia subset;
 the workflow remains usable for rerunning or replacing that reference evidence.
 
 ## Setup

@@ -17,10 +17,10 @@ REPO_ROOT = Path(__file__).resolve().parents[2]
 DEFAULT_ARTIFACT_DIR = Path(__file__).resolve().parent / "reference_artifacts"
 
 PLOT_FILES = {
-    "training": ("thor1-nntrev-training-curves.png", "nntrev-reference-training-curves.png"),
-    "confusion": ("thor1-nntrev-confusion-matrix.png", "nntrev-reference-confusion-matrix.png"),
-    "tradeoff": ("thor1-nntrev-accuracy-latency-size.png", "nntrev-reference-accuracy-latency-size.png"),
-    "calibration": ("thor1-nntrev-calibration-ece.png", "nntrev-reference-calibration-ece.png"),
+    "training": "nntrev-reference-training-curves.png",
+    "confusion": "nntrev-reference-confusion-matrix.png",
+    "tradeoff": "nntrev-reference-accuracy-latency-size.png",
+    "calibration": "nntrev-reference-calibration-ece.png",
 }
 
 
@@ -30,7 +30,7 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         "--artifact-dir",
         type=Path,
         default=DEFAULT_ARTIFACT_DIR,
-        help="Directory containing the thor1-nntrev CSV artifacts and plot PNGs.",
+        help="Directory containing the nntrev-reference CSV artifacts and plot PNGs.",
     )
     parser.add_argument(
         "--plot",
@@ -79,11 +79,11 @@ def main(argv: list[str] | None = None) -> int:
         print("Missing plotting dependencies. Install matplotlib, pandas, and plotnine.", file=sys.stderr)
         return 1
 
-    result_rows = read_rows(artifact_dir, "thor1-nntrev-distillation-results.csv")
-    history = rows_for(selected, "training", read_rows(artifact_dir, "thor1-nntrev-training-curves.csv"))
-    confusion = rows_for(selected, "confusion", read_rows(artifact_dir, "thor1-nntrev-confusion-matrix.csv"))
-    latency = rows_for(selected, "tradeoff", read_rows(artifact_dir, "thor1-nntrev-latency-table.csv"))
-    calibration = rows_for(selected, "calibration", read_rows(artifact_dir, "thor1-nntrev-calibration-summary.csv"))
+    result_rows = read_rows(artifact_dir, "nntrev-reference-distillation-results.csv")
+    history = rows_for(selected, "training", read_rows(artifact_dir, "nntrev-reference-training-curves.csv"))
+    confusion = rows_for(selected, "confusion", read_rows(artifact_dir, "nntrev-reference-confusion-matrix.csv"))
+    latency = rows_for(selected, "tradeoff", read_rows(artifact_dir, "nntrev-reference-latency-table.csv"))
+    calibration = rows_for(selected, "calibration", read_rows(artifact_dir, "nntrev-reference-calibration-summary.csv"))
 
     with tempfile.TemporaryDirectory(prefix="nntrev-plots-") as tmp:
         output_dir = Path(tmp)
@@ -99,14 +99,13 @@ def main(argv: list[str] | None = None) -> int:
 
         ok = True
         for plot_name in sorted(selected):
-            run_name, reference_name = PLOT_FILES[plot_name]
-            source = output_dir / run_name
+            filename = PLOT_FILES[plot_name]
+            source = output_dir / filename
             if not source.exists():
-                print(f"Did not generate {run_name}", file=sys.stderr)
+                print(f"Did not generate {filename}", file=sys.stderr)
                 ok = False
                 continue
-            ok = compare_or_copy(source, artifact_dir / run_name, check=args.check) and ok
-            ok = compare_or_copy(source, artifact_dir / reference_name, check=args.check) and ok
+            ok = compare_or_copy(source, artifact_dir / filename, check=args.check) and ok
 
     return 0 if ok else 1
 

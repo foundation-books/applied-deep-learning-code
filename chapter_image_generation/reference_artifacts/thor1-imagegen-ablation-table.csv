@@ -1,3 +1,0 @@
-component,final_loss,peak_memory_mb,rank,sample_file,seconds,trainable_parameters
-lora_finetune_rank_4,0.08435448259115219,398.0634765625,4,figures/thor1-imagegen-lora-rank-4-grid.png,23.01620948407799,3340
-lora_finetune_rank_8,0.06781080365180969,405.048828125,8,figures/thor1-imagegen-lora-rank-8-grid.png,18.253034410066903,6680

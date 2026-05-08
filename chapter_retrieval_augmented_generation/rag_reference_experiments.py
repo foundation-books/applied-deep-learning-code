@@ -1074,8 +1074,8 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--corpus-dir", type=Path, default=here / "sample_corpus")
     parser.add_argument("--questions", type=Path, default=here / "sample_questions.jsonl")
-    parser.add_argument("--output-dir", type=Path, default=here / "artifacts" / "thor1-rag")
-    parser.add_argument("--run-id", default=time.strftime("thor1-rag-%Y%m%dT%H%M%SZ", time.gmtime()))
+    parser.add_argument("--output-dir", type=Path, default=here / "artifacts" / "rag-reference")
+    parser.add_argument("--run-id", default=time.strftime("rag-reference-%Y%m%dT%H%M%SZ", time.gmtime()))
     parser.add_argument("--corpus-version", default="sample-v1")
     parser.add_argument("--chunk-tokens", type=int, default=80)
     parser.add_argument("--overlap-tokens", type=int, default=20)
@@ -1176,15 +1176,15 @@ def main(argv: list[str] | None = None) -> int:
     answer_summary = summarize_answer_rows(answer_rows)
     topk_summary = [row for row in answer_summary if str(row.get("run_name", "")).startswith("hybrid_topk_")]
     artifacts = [
-        "thor1-rag-retrieval-results.jsonl",
-        "thor1-rag-retrieval-summary.csv",
-        "thor1-rag-generation-results.jsonl",
-        "thor1-rag-generation-summary.csv",
-        "thor1-rag-topk-context-summary.csv",
-        "thor1-rag-prompt-injection-results.jsonl",
-        "thor1-rag-vector-scaling.csv",
-        "thor1-rag-run-summary.json",
-        "thor1-rag-reference-results-metadata.txt",
+        "rag-reference-retrieval-results.jsonl",
+        "rag-reference-retrieval-summary.csv",
+        "rag-reference-generation-results.jsonl",
+        "rag-reference-generation-summary.csv",
+        "rag-reference-topk-context-summary.csv",
+        "rag-reference-prompt-injection-results.jsonl",
+        "rag-reference-vector-scaling.csv",
+        "rag-reference-run-summary.json",
+        "rag-reference-results-metadata.txt",
     ]
     summary = {
         "run_id": args.run_id,
@@ -1197,15 +1197,15 @@ def main(argv: list[str] | None = None) -> int:
         "artifacts": artifacts,
     }
 
-    write_jsonl(args.output_dir / "thor1-rag-retrieval-results.jsonl", retrieval_rows)
-    write_csv(args.output_dir / "thor1-rag-retrieval-summary.csv", retrieval_summary)
-    write_jsonl(args.output_dir / "thor1-rag-generation-results.jsonl", answer_rows)
-    write_csv(args.output_dir / "thor1-rag-generation-summary.csv", answer_summary)
-    write_csv(args.output_dir / "thor1-rag-topk-context-summary.csv", topk_summary)
-    write_jsonl(args.output_dir / "thor1-rag-prompt-injection-results.jsonl", injection_rows)
-    write_csv(args.output_dir / "thor1-rag-vector-scaling.csv", scaling_rows)
-    write_json(args.output_dir / "thor1-rag-run-summary.json", summary)
-    (args.output_dir / "thor1-rag-reference-results-metadata.txt").write_text(
+    write_jsonl(args.output_dir / "rag-reference-retrieval-results.jsonl", retrieval_rows)
+    write_csv(args.output_dir / "rag-reference-retrieval-summary.csv", retrieval_summary)
+    write_jsonl(args.output_dir / "rag-reference-generation-results.jsonl", answer_rows)
+    write_csv(args.output_dir / "rag-reference-generation-summary.csv", answer_summary)
+    write_csv(args.output_dir / "rag-reference-topk-context-summary.csv", topk_summary)
+    write_jsonl(args.output_dir / "rag-reference-prompt-injection-results.jsonl", injection_rows)
+    write_csv(args.output_dir / "rag-reference-vector-scaling.csv", scaling_rows)
+    write_json(args.output_dir / "rag-reference-run-summary.json", summary)
+    (args.output_dir / "rag-reference-results-metadata.txt").write_text(
         metadata_text(args, summary),
         encoding="utf-8",
     )

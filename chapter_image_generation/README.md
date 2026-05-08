@@ -37,9 +37,9 @@ python image_generation_experiments.py \
   --output-dir runs/image-generation-reference
 ```
 
-The run writes PNG grids, CSV tables, a metadata text file, and a
-`thor1-imagegen-result-values.json` file. The compact JSON and CSV records cited
+The run writes PNG grids, CSV tables, a metadata text file, and an
+`imagegen-reference-result-values.json` file. The compact JSON and CSV records cited
 by the chapter tables are mirrored in `reference_artifacts/`:
-`thor1-imagegen-result-values.json`, `thor1-imagegen-ablation-table.csv`, and
-`thor1-imagegen-runtime-memory-table.csv`. Figure-only PNG grids remain rendered
+`imagegen-reference-result-values.json`, `imagegen-reference-ablation-table.csv`, and
+`imagegen-reference-runtime-memory-table.csv`. Figure-only PNG grids remain rendered
 in the book PDF.

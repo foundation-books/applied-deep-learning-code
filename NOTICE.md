@@ -66,7 +66,6 @@ Important upstream data notes:
 - Kaggle, Hugging Face, Qwen, Unsloth, TorchVision, and other model or dataset
   providers may impose separate model, data, or service terms.
 
-Reference files with historical `thor1-*` names are compact reproducibility
-records from a CUDA reference run. The prefix is retained for compatibility
-with the book text and figure-generation scripts; public-facing metadata avoids
+Reference files with neutral `*-reference-*` names are compact reproducibility
+records from reviewed CUDA reference runs. Public-facing metadata avoids
 recording private hostnames or local home-directory paths.

@@ -26,7 +26,7 @@ from typing import Any
 
 LABEL_NAMES = ["World", "Sports", "Business", "Sci/Tech"]
 CSV_LINETERMINATOR = "\n"
-ARTIFACT_PREFIX = "thor1-nntrev"
+ARTIFACT_PREFIX = "nntrev-reference"
 
 INSTALL_HELP = """Install the experiment dependencies first:
   python3 -m pip install 'torch>=2.2' 'transformers>=4.40,<5' 'datasets>=2.19' numpy matplotlib plotnine
@@ -123,7 +123,7 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     )
     parser.add_argument("--cache-dir", type=Path, default=None)
     parser.add_argument(
-        "--output-dir", type=Path, default=Path("runs/thor1-nntrev-ag-news")
+        "--output-dir", type=Path, default=Path("runs/nntrev-reference-ag-news")
     )
     parser.add_argument("--seed", type=int, default=1234)
     parser.add_argument("--max-length", type=positive_int, default=96)
@@ -1052,17 +1052,17 @@ def make_result_values(
         "RESULT_PLACEHOLDER_DISTILLED_STUDENT_MODEL_SIZE": fmt_mb(
             float(by_model["distilled_student"]["model_size_mb"])
         ),
-        "RESULT_PLACEHOLDER_DISTILLATION_TRADEOFF_TABLE": "\\texttt{thor1-nntrev-distillation-results.csv}",
-        "RESULT_PLACEHOLDER_TRAINING_CURVES": "\\texttt{thor1-nntrev-training-curves.csv}",
-        "RESULT_PLACEHOLDER_LATENCY_TABLE": "\\texttt{thor1-nntrev-latency-table.csv}",
-        "RESULT_PLACEHOLDER_THROUGHPUT_TABLE": "\\texttt{thor1-nntrev-latency-table.csv}",
-        "RESULT_PLACEHOLDER_PARAMETER_COUNT_TABLE": "\\texttt{thor1-nntrev-model-footprint.csv}",
-        "RESULT_PLACEHOLDER_MODEL_SIZE_TABLE": "\\texttt{thor1-nntrev-model-footprint.csv}",
-        "RESULT_PLACEHOLDER_PEAK_MEMORY_TABLE": "\\texttt{thor1-nntrev-model-footprint.csv}",
-        "RESULT_PLACEHOLDER_CONFUSION_MATRIX": "\\texttt{thor1-nntrev-confusion-matrix.csv}",
-        "RESULT_PLACEHOLDER_CALIBRATION_SUMMARY": "\\texttt{thor1-nntrev-calibration-summary.csv}",
-        "RESULT_PLACEHOLDER_STUDENT_VS_TEACHER_ERROR_EXAMPLES": "\\texttt{thor1-nntrev-error-examples.csv}",
-        "RESULT_PLACEHOLDER_FAILURE_CASES": "\\texttt{thor1-nntrev-error-examples.csv}",
+        "RESULT_PLACEHOLDER_DISTILLATION_TRADEOFF_TABLE": "\\texttt{nntrev-reference-distillation-results.csv}",
+        "RESULT_PLACEHOLDER_TRAINING_CURVES": "\\texttt{nntrev-reference-training-curves.csv}",
+        "RESULT_PLACEHOLDER_LATENCY_TABLE": "\\texttt{nntrev-reference-latency-table.csv}",
+        "RESULT_PLACEHOLDER_THROUGHPUT_TABLE": "\\texttt{nntrev-reference-latency-table.csv}",
+        "RESULT_PLACEHOLDER_PARAMETER_COUNT_TABLE": "\\texttt{nntrev-reference-model-footprint.csv}",
+        "RESULT_PLACEHOLDER_MODEL_SIZE_TABLE": "\\texttt{nntrev-reference-model-footprint.csv}",
+        "RESULT_PLACEHOLDER_PEAK_MEMORY_TABLE": "\\texttt{nntrev-reference-model-footprint.csv}",
+        "RESULT_PLACEHOLDER_CONFUSION_MATRIX": "\\texttt{nntrev-reference-confusion-matrix.csv}",
+        "RESULT_PLACEHOLDER_CALIBRATION_SUMMARY": "\\texttt{nntrev-reference-calibration-summary.csv}",
+        "RESULT_PLACEHOLDER_STUDENT_VS_TEACHER_ERROR_EXAMPLES": "\\texttt{nntrev-reference-error-examples.csv}",
+        "RESULT_PLACEHOLDER_FAILURE_CASES": "\\texttt{nntrev-reference-error-examples.csv}",
         "RESULT_SUMMARY_ACCURACY_DELTA": fmt_pct(accuracy_delta),
         "RESULT_SUMMARY_DISTILLED_SPEEDUP": fmt_ratio(speedup),
     }

@@ -152,7 +152,7 @@ nnt-revisited-code-check: poetry-check
 	cd chapter_neural_network_training_revisited && $(PYTHON) transformer_distillation_experiment.py --check-deps --allow-missing-deps >/dev/null
 
 rag-code-check: poetry-check
-	$(PY_SYNTAX_CHECK) chapter_retrieval_augmented_generation/rag_course_assistant.py chapter_retrieval_augmented_generation/rag_thor1_experiments.py
+	$(PY_SYNTAX_CHECK) chapter_retrieval_augmented_generation/rag_course_assistant.py chapter_retrieval_augmented_generation/rag_reference_experiments.py
 	$(PYTHON) -m json.tool chapter_retrieval_augmented_generation/rag_course_assistant_walkthrough.ipynb >/dev/null
 	cd chapter_retrieval_augmented_generation && $(PYTHON) rag_course_assistant.py --check-deps --allow-missing-deps >/dev/null
 	cd chapter_retrieval_augmented_generation && $(PYTHON) rag_course_assistant.py --preview-corpus >/dev/null
