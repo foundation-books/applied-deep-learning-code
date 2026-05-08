@@ -161,28 +161,19 @@ than native Windows setup. Verify the WSL distribution can see the NVIDIA GPU
 before starting GPU chapters, then record the driver, CUDA, PyTorch, TensorFlow,
 and provider-package versions with any reported run artifacts.
 
-## Data And Secrets
+## Data, Artifacts, And Safety
 
 Do not commit `.env` files. If a workflow uses an external API, `.env` should
-contain only secrets such as API keys. Prompts, manifests, generated outputs,
-scores, downloaded datasets, local audio, checkpoints, and run metadata belong
-in ignored directories such as `data/`, `runs/`, `artifacts/`, `outputs/`, or
-`sample_audio/`.
-
-This repository does not bundle large datasets, model weights, DICOM files, or
-audio corpora. Download datasets from their original providers and follow the
-provider's license and attribution terms.
-
-## Reference Artifacts
+contain only secrets such as API keys. Keep prompts, manifests, generated
+outputs, scores, downloaded datasets, local audio, checkpoints, and run metadata
+in ignored data or artifact directories.
 
 Small CSV, JSON, and PNG artifacts under `reference_artifacts/` mirror evidence
 used by the textbook. They are included so readers can inspect table inputs and
 plot records without rerunning long GPU jobs. Raw third-party dataset text is
 redacted from public reference artifacts when redistribution terms are unclear.
 
-## Safety Defaults
-
-Scripts avoid saved notebook outputs, avoid committing generated run
-directories, and keep remote model code execution opt-in. If you intentionally
-load a Hugging Face model that requires custom repository code, pass the
-script's `--trust-remote-code` flag only after reviewing that model repository.
+This repository does not bundle large datasets, model weights, DICOM files, or
+audio corpora. Download datasets from their original providers and follow their
+license and attribution terms. Scripts keep remote model code execution opt-in;
+pass `--trust-remote-code` only after reviewing the selected model repository.
