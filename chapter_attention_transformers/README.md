@@ -40,7 +40,7 @@ poetry install --with attention-transformers
 Run a lightweight dependency check:
 
 ```sh
-poetry run python toxic_comments_transformer.py --check-deps
+python toxic_comments_transformer.py --check-deps
 ```
 
 Repository smoke checks use `--allow-missing-deps` so the textbook can still be
@@ -51,7 +51,7 @@ checked on machines without a full Transformer training stack.
 Run the controlled max-length comparison:
 
 ```sh
-poetry run python toxic_comments_transformer.py \
+python toxic_comments_transformer.py \
   --data-dir data \
   --checkpoint distilbert-base-uncased \
   --max-lengths 128 256 \
@@ -71,7 +71,7 @@ setting false-positive and false-negative example CSV files for error analysis.
 For a tiny pipeline check, use synthetic data and a tiny checkpoint:
 
 ```sh
-poetry run python toxic_comments_transformer.py --quick --save-artifacts
+python toxic_comments_transformer.py --quick --save-artifacts
 ```
 
 ## Baseline, Audit, And Scaling Runs
@@ -79,7 +79,7 @@ poetry run python toxic_comments_transformer.py --quick --save-artifacts
 Run the non-Transformer baseline on the same CSV:
 
 ```sh
-poetry run python toxic_comments_tfidf_baseline.py \
+python toxic_comments_tfidf_baseline.py \
   --data-dir data \
   --save-artifacts
 ```
@@ -87,7 +87,7 @@ poetry run python toxic_comments_tfidf_baseline.py \
 Audit label imbalance and truncation rates:
 
 ```sh
-poetry run python toxic_comments_data_audit.py \
+python toxic_comments_data_audit.py \
   --data-dir data \
   --max-lengths 128 256 512 \
   --save-artifacts
@@ -96,7 +96,7 @@ poetry run python toxic_comments_data_audit.py \
 Benchmark sequence-length scaling with PyTorch:
 
 ```sh
-poetry run python attention_scaling_benchmark.py \
+python attention_scaling_benchmark.py \
   --lengths 64 128 256 512 \
   --save-artifacts
 ```

@@ -16,7 +16,7 @@ poetry install --with transfer-learning
 Quick dependency check:
 
 ```sh
-poetry run python food101_fastai.py --check-deps
+python food101_fastai.py --check-deps
 ```
 
 The dependency check prints package status only; it does not create a run
@@ -37,7 +37,7 @@ Quick Keras dependency check. This command returns success when Keras is not
 installed, so the default fast.ai code check can remain lightweight:
 
 ```sh
-poetry run python food101_keras3.py --check-deps --allow-missing-deps
+python food101_keras3.py --check-deps --allow-missing-deps
 ```
 
 ## Notebook Walkthrough
@@ -64,7 +64,7 @@ Smoke test without downloading Food-101 or pretrained weights. Smoke mode
 disables pretrained weights by default unless `--smoke-pretrained` is passed.
 
 ```sh
-poetry run python food101_fastai.py \
+python food101_fastai.py \
   --smoke --architecture resnet18 --freeze-epochs 1 --epochs 0 \
   --image-size 64 --resize-size 72 --batch-size 4 --max-top-losses 4 \
   --output-dir /tmp/adl-food101-fastai-smoke
@@ -74,7 +74,7 @@ Full Food-101 baseline, to be run only when the dataset download and training
 time are intended:
 
 ```sh
-poetry run python food101_fastai.py \
+python food101_fastai.py \
   --architecture resnet34 --image-size 224 --resize-size 460 \
   --batch-size 64 --freeze-epochs 1 --epochs 5 --base-lr 3e-3 \
   --output-dir runs/resnet34-baseline
@@ -86,7 +86,7 @@ Use that option only once after selecting a model from validation evidence.
 Keras 3 smoke test, after installing one Keras backend:
 
 ```sh
-poetry run python food101_keras3.py --backend tensorflow --quick
+python food101_keras3.py --backend tensorflow --quick
 ```
 
 Keras 3 Food-101 run using an existing Food-101 download. The script looks for a
@@ -94,7 +94,7 @@ fast.ai-style cache automatically, but `--data-root` makes the data provenance
 explicit:
 
 ```sh
-poetry run python food101_keras3.py \
+python food101_keras3.py \
   --backend tensorflow --data-root ~/.fastai/data/food-101 \
   --image-size 224 --batch-size 32 --freeze-epochs 1 --epochs 5 \
   --head-lr 3e-4 --fine-tune-lr 1e-5

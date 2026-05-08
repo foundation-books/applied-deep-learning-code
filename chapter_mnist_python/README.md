@@ -8,7 +8,7 @@ directory. Check it and run the dependency-free shape diagnostic:
 
 ```sh
 poetry check
-poetry run python mnist_shape_check.py
+python mnist_shape_check.py
 ```
 
 For the first training batch, expect a randomly initialized ten-class model to
@@ -44,15 +44,15 @@ poetry install --with keras-jax
 Run the chapter model from this directory:
 
 ```sh
-KERAS_BACKEND=tensorflow poetry run python mnist_keras3.py
-KERAS_BACKEND=torch poetry run python mnist_keras3.py
-KERAS_BACKEND=jax poetry run python mnist_keras3.py
+KERAS_BACKEND=tensorflow python mnist_keras3.py
+KERAS_BACKEND=torch python mnist_keras3.py
+KERAS_BACKEND=jax python mnist_keras3.py
 ```
 
 Use a short run while checking a new environment:
 
 ```sh
-KERAS_BACKEND=torch poetry run python mnist_keras3.py --quick
+KERAS_BACKEND=torch python mnist_keras3.py --quick
 ```
 
 ## Direct PyTorch
@@ -66,11 +66,11 @@ poetry install --with pytorch
 Run the chapter model from this directory:
 
 ```sh
-poetry run python mnist_pytorch.py
+python mnist_pytorch.py
 ```
 
 Use a short run while checking a new environment:
 
 ```sh
-poetry run python mnist_pytorch.py --quick
+python mnist_pytorch.py --quick
 ```

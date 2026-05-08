@@ -43,7 +43,7 @@ poetry install --with embeddings,keras-jax
 Run a dependency check:
 
 ```sh
-poetry run python kaggle_bag_of_embeddings_sentiment.py --check-deps
+python kaggle_bag_of_embeddings_sentiment.py --check-deps
 ```
 
 Repository smoke checks use `--allow-missing-deps` so the textbook can be
@@ -67,7 +67,7 @@ checks.
 Run the non-neural TF-IDF logistic regression baseline:
 
 ```sh
-poetry run python kaggle_bag_of_embeddings_sentiment.py \
+python kaggle_bag_of_embeddings_sentiment.py \
   --data-dir data \
   --baseline-only \
   --save-artifacts
@@ -77,7 +77,7 @@ Train the bag-of-embeddings model and record validation examples for error
 analysis:
 
 ```sh
-poetry run python kaggle_bag_of_embeddings_sentiment.py \
+python kaggle_bag_of_embeddings_sentiment.py \
   --backend tensorflow \
   --data-dir data \
   --epochs 8 \
@@ -94,7 +94,7 @@ poetry run python kaggle_bag_of_embeddings_sentiment.py \
 Create a quick local smoke run without real IMDB data:
 
 ```sh
-poetry run python kaggle_bag_of_embeddings_sentiment.py \
+python kaggle_bag_of_embeddings_sentiment.py \
   --synthetic-data \
   --quick \
   --backend tensorflow
@@ -103,7 +103,7 @@ poetry run python kaggle_bag_of_embeddings_sentiment.py \
 Run a controlled sweep from a JSON file:
 
 ```sh
-poetry run python kaggle_bag_of_embeddings_sentiment.py \
+python kaggle_bag_of_embeddings_sentiment.py \
   --backend tensorflow \
   --data-dir data \
   --sweep-json sweep.json \
@@ -125,7 +125,7 @@ list:
 Create a Kaggle submission after selecting a model by validation evidence:
 
 ```sh
-poetry run python kaggle_bag_of_embeddings_sentiment.py \
+python kaggle_bag_of_embeddings_sentiment.py \
   --data-dir data \
   --make-submission \
   --save-artifacts

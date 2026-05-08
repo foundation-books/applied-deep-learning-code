@@ -47,19 +47,19 @@ poetry install --with keras-jax
 Run a dependency check:
 
 ```sh
-poetry run python imdb_rnn_keras3.py --check-deps
+python imdb_rnn_keras3.py --check-deps
 ```
 
 Run a quick synthetic-data check without downloading IMDB:
 
 ```sh
-poetry run python imdb_rnn_keras3.py --quick --synthetic-data --model gru
+python imdb_rnn_keras3.py --quick --synthetic-data --model gru
 ```
 
 Run a validation-only IMDB experiment on the shared raw-text data:
 
 ```sh
-poetry run python imdb_rnn_keras3.py --model lstm --epochs 5 --early-stopping-patience 2 --batch-size 128 --max-length 200 --num-words 10000 --data-source shared-imdb --data-dir ../chapter_embeddings/data --save-artifacts
+python imdb_rnn_keras3.py --model lstm --epochs 5 --early-stopping-patience 2 --batch-size 128 --max-length 200 --num-words 10000 --data-source shared-imdb --data-dir ../chapter_embeddings/data --save-artifacts
 ```
 
 After selecting a final model by validation evidence, add `--evaluate-test` to
@@ -67,7 +67,7 @@ evaluate the held-out test set once. This requires a labeled test split, such as
 `aclImdb/test`:
 
 ```sh
-poetry run python imdb_rnn_keras3.py --model lstm --epochs 5 --early-stopping-patience 2 --batch-size 128 --max-length 200 --num-words 10000 --data-source shared-imdb --data-dir ../chapter_embeddings/data --save-artifacts --evaluate-test
+python imdb_rnn_keras3.py --model lstm --epochs 5 --early-stopping-patience 2 --batch-size 128 --max-length 200 --num-words 10000 --data-source shared-imdb --data-dir ../chapter_embeddings/data --save-artifacts --evaluate-test
 ```
 
 The script also accepts `--model average`, `--model simple-rnn`, `--model gru`,

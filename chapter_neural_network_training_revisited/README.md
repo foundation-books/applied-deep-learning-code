@@ -67,7 +67,7 @@ committed CSV artifacts without rerunning the full experiment:
 
 ```sh
 MPLCONFIGDIR=/tmp/mplconfig \
-poetry run python regenerate_reference_plots.py \
+python regenerate_reference_plots.py \
   --plot calibration --check
 ```
 

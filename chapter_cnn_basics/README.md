@@ -43,27 +43,27 @@ TensorFlow. You can force another backend with `KERAS_BACKEND=...` or
 Run a quick environment check before a full run:
 
 ```sh
-KERAS_BACKEND=tensorflow poetry run python cifar10_keras3.py --quick
+KERAS_BACKEND=tensorflow python cifar10_keras3.py --quick
 ```
 
 Run the same checks without downloading CIFAR-10:
 
 ```sh
-poetry run python cifar10_keras3.py --quick --synthetic-data --epochs 1
+python cifar10_keras3.py --quick --synthetic-data --epochs 1
 ```
 
 Run a full baseline with an explicit backend. This reports validation metrics
 only, so it is appropriate while you are still tuning:
 
 ```sh
-poetry run python cifar10_keras3.py --backend tensorflow
+python cifar10_keras3.py --backend tensorflow
 ```
 
 After selecting a final model by validation evidence, add `--evaluate-test` to
 report the held-out test result once:
 
 ```sh
-poetry run python cifar10_keras3.py --backend torch --epochs 10 --batch-size 128 --seed 1234 --validation-size 5000 --save-figures --evaluate-test
+python cifar10_keras3.py --backend torch --epochs 10 --batch-size 128 --seed 1234 --validation-size 5000 --save-figures --evaluate-test
 ```
 
 The script also accepts `--backend`, `--epochs`, `--batch-size`, `--seed`,

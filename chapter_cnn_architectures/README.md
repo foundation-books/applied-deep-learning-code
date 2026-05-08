@@ -57,19 +57,19 @@ poetry install --with keras-jax,figures
 Run a dependency check:
 
 ```sh
-poetry run python resnet50_cifar10_keras3.py --check-deps
+python resnet50_cifar10_keras3.py --check-deps
 ```
 
 Run a quick synthetic-data check:
 
 ```sh
-poetry run python resnet50_cifar10_keras3.py --quick --synthetic-data
+python resnet50_cifar10_keras3.py --quick --synthetic-data
 ```
 
 Run a student-scale full CIFAR-10 experiment with the CIFAR-style stem:
 
 ```sh
-poetry run python resnet50_cifar10_keras3.py --backend tensorflow --epochs 50 --batch-size 128 --stem cifar --model-variant resnet18 --augmentation basic --schedule cosine --save-figures
+python resnet50_cifar10_keras3.py --backend tensorflow --epochs 50 --batch-size 128 --stem cifar --model-variant resnet18 --augmentation basic --schedule cosine --save-figures
 ```
 
 ## Direct PyTorch ResNet
@@ -83,26 +83,26 @@ poetry install --with pytorch,figures
 Run a dependency check:
 
 ```sh
-poetry run python resnet50_cifar10_pytorch.py --check-deps
+python resnet50_cifar10_pytorch.py --check-deps
 ```
 
 Run a quick synthetic-data check:
 
 ```sh
-poetry run python resnet50_cifar10_pytorch.py --quick --synthetic-data
+python resnet50_cifar10_pytorch.py --quick --synthetic-data
 ```
 
 Run the bounded real-data verification command used for the committed PyTorch
 artifact format:
 
 ```sh
-poetry run python resnet50_cifar10_pytorch.py --epochs 1 --batch-size 32 --stem cifar --model-variant resnet50 --optimizer adamw --learning-rate 0.001 --weight-decay 0.0005 --schedule constant --augmentation basic --validation-size 5000 --limit-train 512 --limit-val 256 --limit-test 256 --evaluate-test --save-figures
+python resnet50_cifar10_pytorch.py --epochs 1 --batch-size 32 --stem cifar --model-variant resnet50 --optimizer adamw --learning-rate 0.001 --weight-decay 0.0005 --schedule constant --augmentation basic --validation-size 5000 --limit-train 512 --limit-val 256 --limit-test 256 --evaluate-test --save-figures
 ```
 
 Run a student-scale full CIFAR-10 experiment:
 
 ```sh
-poetry run python resnet50_cifar10_pytorch.py --epochs 50 --batch-size 128 --stem cifar --model-variant resnet18 --augmentation basic --schedule cosine --save-figures
+python resnet50_cifar10_pytorch.py --epochs 50 --batch-size 128 --stem cifar --model-variant resnet18 --augmentation basic --schedule cosine --save-figures
 ```
 
 Add `--evaluate-test` only for the final selected or verification run. Ordinary

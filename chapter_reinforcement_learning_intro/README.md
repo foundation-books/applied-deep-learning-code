@@ -51,7 +51,7 @@ poetry install --with rl-intro,figures
 A quick dependency-backed Gymnasium smoke run for the homework default is:
 
 ```sh
-poetry run python chapter_reinforcement_learning_intro/gymnasium_rl_experiment.py \
+python chapter_reinforcement_learning_intro/gymnasium_rl_experiment.py \
   --smoke-transition --env-id LunarLander-v3 \
   --output-dir /tmp/adl-rl-first-transition
 ```
@@ -59,7 +59,7 @@ poetry run python chapter_reinforcement_learning_intro/gymnasium_rl_experiment.p
 A short LunarLander PPO homework run looks like:
 
 ```sh
-poetry run python chapter_reinforcement_learning_intro/gymnasium_rl_experiment.py \
+python chapter_reinforcement_learning_intro/gymnasium_rl_experiment.py \
   --env-id LunarLander-v3 --algorithm ppo \
   --n-envs 4 --train-steps 100000 --eval-episodes 20 --seed 7 \
   --deterministic-eval --success-return-threshold 200 \
@@ -71,7 +71,7 @@ The named MiniGrid fallback avoids Box2D and gives a more puzzle-like agent
 task:
 
 ```sh
-poetry run python chapter_reinforcement_learning_intro/gymnasium_rl_experiment.py \
+python chapter_reinforcement_learning_intro/gymnasium_rl_experiment.py \
   --env-id MiniGrid-DoorKey-6x6-v0 --env-wrapper minigrid-img \
   --algorithm ppo --policy MlpPolicy \
   --n-envs 4 --train-steps 100000 --eval-episodes 20 --seed 7 \

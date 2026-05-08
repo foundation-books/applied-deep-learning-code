@@ -26,20 +26,20 @@ full Food-101 experiments.
 Dependency check:
 
 ```sh
-poetry run python convnext_food101_pytorch.py --check-deps --allow-missing-deps
+python convnext_food101_pytorch.py --check-deps --allow-missing-deps
 ```
 
 Synthetic smoke test without downloading Food-101 or pretrained weights:
 
 ```sh
-poetry run python convnext_food101_pytorch.py \
+python convnext_food101_pytorch.py \
   --quick --output-dir /tmp/adl-convnext-food101-smoke --allow-missing-deps
 ```
 
 Full Food-101 run using an existing Food-101 download:
 
 ```sh
-poetry run python convnext_food101_pytorch.py \
+python convnext_food101_pytorch.py \
   --data-root ~/.fastai/data/food-101 \
   --model-variant convnext_tiny \
   --image-size 224 --resize-size 256 --batch-size 32 \
@@ -51,7 +51,7 @@ poetry run python convnext_food101_pytorch.py \
 If Food-101 is not already available, let TorchVision download it first:
 
 ```sh
-poetry run python convnext_food101_pytorch.py \
+python convnext_food101_pytorch.py \
   --download --download-root ~/.cache/torch/datasets \
   --model-variant convnext_tiny \
   --limit-train 512 --limit-val 128 \

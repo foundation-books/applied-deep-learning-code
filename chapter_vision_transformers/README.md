@@ -36,20 +36,20 @@ notebook intentionally has no saved outputs.
 Run a dependency check:
 
 ```sh
-poetry run python pretrained_vit_experiment.py --check-deps --allow-missing-deps
+python pretrained_vit_experiment.py --check-deps --allow-missing-deps
 ```
 
 Run the synthetic quick path without downloading data or pretrained weights:
 
 ```sh
-poetry run python pretrained_vit_experiment.py \
+python pretrained_vit_experiment.py \
   --quick --output-dir /tmp/adl-vit-smoke --allow-missing-deps
 ```
 
 Run the Food-101 head-only baseline with a pretrained ViT checkpoint:
 
 ```sh
-poetry run python pretrained_vit_experiment.py \
+python pretrained_vit_experiment.py \
   --dataset food101 --download --data-root ~/.cache/torch/datasets \
   --checkpoint google/vit-base-patch16-224-in21k \
   --image-size 224 --resize-size 256 --batch-size 16 \
@@ -63,7 +63,7 @@ the ViT attention query and value projections while keeping the same data split,
 checkpoint, and image size:
 
 ```sh
-poetry run python pretrained_vit_experiment.py \
+python pretrained_vit_experiment.py \
   --dataset food101 --data-root ~/.cache/torch/datasets \
   --checkpoint google/vit-base-patch16-224-in21k \
   --image-size 224 --resize-size 256 --batch-size 16 \
@@ -82,7 +82,7 @@ fallback and state the limitation in the report.
 After the baseline and LoRA ablation runs finish, write local summary artifacts:
 
 ```sh
-poetry run python summarize_vit_runs.py \
+python summarize_vit_runs.py \
   --run baseline=runs/vit-food101-head \
   --run ablation=runs/vit-food101-lora \
   --output-dir runs/vit-food101-summary \

@@ -84,7 +84,7 @@ setup already has `ipykernel` available for the selected Poetry environment,
 you can register the kernel with:
 
 ```sh
-poetry run python -m ipykernel install --user --name applied-deep-learning-code --display-name "Applied Deep Learning code"
+python -m ipykernel install --user --name applied-deep-learning-code --display-name "Applied Deep Learning code"
 ```
 
 ## Companion Coverage
